@@ -1,4 +1,4 @@
-#include "1_TwoSum.hpp"
+#include "TwoSum.hpp"
 
 std::vector<int> Solution::twoSum(const std::vector<int> &nums, int target){
 	std::unordered_map<int, int> datas;

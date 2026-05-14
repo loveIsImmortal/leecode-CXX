@@ -1,4 +1,4 @@
-#include "1_TwoSum.hpp"
+#include "TwoSum.hpp"
 #include <iostream>
 
 int main(int argc, char **argv){

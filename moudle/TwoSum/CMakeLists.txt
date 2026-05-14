@@ -6,36 +6,36 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 option(MDEBUG "test check" OFF)
 
+add_library(TwoSum)
+target_sources(TwoSum
+	PRIVATE
+		src/TwoSum.cpp
+	PUBLIC
+		FILE_SET twoSum
+		TYPE HEADERS
+		BASE_DIRS inc
+		FILES
+			inc/TwoSum.cpp
+)
+
+target_include_directories(Main
+	PRIVATE
+		inc/
+)
+
 if (MDEBUG)
 	project(
-		TwoSum
+		twoSum
 		LANGUAGES CXX
 	)
 	add_executable(Main)
 
 	target_sources(Main
 		PRIVATE
-			src/TwoSum.cpp
-			inc/TwoSum.hpp
 			main.cpp
 	)
-	target_include_directories(Main
-	PRIVATE
-		${CMAKE_CURRENT_SOURCE_DIR}/inc
-	)
-
-else()
-	add_library(TwoSum)
-	target_sources(TwoSum
-	PRIVATE
-		BASE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/moudle/TwoSum/src
-		FILES
-			TwoSum.cpp
-	PUBLIC
-		FILE_SET twoSum
-		TYPE HEADERS
-		BASE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/moudle/TwoSum/inc
-		FILES
-			TwoSum.hpp
+	target_link_libraries(Main
+		PRIVATE
+			TwoSum
 	)
 endif()
